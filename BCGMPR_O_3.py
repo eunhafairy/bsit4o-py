@@ -72,7 +72,7 @@ else:
 
 # PROBLEM 3
 #solution 1
-user_input = input("Solution 1: Enter Word/s: ")
+user_input = input("\nSolution 1: Enter Word/s: ")
 user_input = user_input.replace(" ", "")
 user_input = user_input.lower()
 reversed_user_input = ""
@@ -87,6 +87,16 @@ else:
         print("It's a palindrome")
     else:
         print("It's not a palindrome")
+
+#solution 2
+word = input('Solution 2: Enter Word/s: ')
+
+if word != "":
+    formatword = word.replace(" ","")
+    rev = formatword[::-1]
+    print("It's a palindrome") if formatword.lower() == rev.lower() else print("It's not a palindrome")
+else:
+    print("It's not a Palindrome")
 
 #PROBLEM 4
 
