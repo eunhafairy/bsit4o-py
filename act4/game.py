@@ -12,10 +12,9 @@ while(True):
             continue
         
     
-        if (1 <= noOfQuestion <= newQuiz.getLen()):
+        if (newQuiz.loadQuestions(noOfQuestion) != None):
             break
-        else:
-            print("Error. Enter numbers only from 1 -",newQuiz.getLen())
+     
         
 
     #load questions
