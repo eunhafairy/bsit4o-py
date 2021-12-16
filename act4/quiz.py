@@ -128,19 +128,34 @@ class Quiz:
 
     def checkAnswer(self, question_ : str, answer : str) -> bool:
 
-        isCorrect = False
-        
-        if(list(self.__questions[question_])[3] == answer):
-                isCorrect = True
-                self.__correctTotal+=1
-                self.__score+=50
-                #correct
-        else:
-                isCorrect = False
-                self.__incorrectTotal+=1
-                #incorrect
+        # isCorrect = False
+        # ctr = 1
+        # if(list(self.__questions[question_])[3] == answer):
+        #         isCorrect = True
+        #         self.__correctTotal+=1
+        #         self.__score+=50
+        #         #correct
+        # else:
+        #         isCorrect = False
+        #         self.__incorrectTotal+=1
+        #         #incorrect
         
 
+        # return isCorrect
+
+        isCorrect = False
+        correctCtr = 0
+        incorrectCtr = 1
+        score = 0
+        if(list(self.__questions[question_])[3] == answer):
+                isCorrect = True
+                correctCtr = 1 
+                incorrectCtr = 0
+                score = 50
+        
+        self.__correctTotal +=correctCtr
+        self.__incorrectTotal+=incorrectCtr
+        self.__score+=score
         return isCorrect
 
    
