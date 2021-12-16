@@ -3,103 +3,105 @@ import random
 
 class Quiz:
 
-    def __init__(self, question = {
-                        "Ano ang english ng aso" : ["Horse",
-                                "Bird",
-                                "Cow",
-                                "Dog"],
-                        "Ano ang english ng kabayo" : ["Dog",
-                                "Bird",
-                                "Cow",
-                                "Horse"],
-                        "Ano ang english ng pusa" : ["Dog",
-                                "Chicken",
-                                "Pig",
-                                "Cat"],
-                        "Ano ang english ng puno" : ["Rock",
-                                "Plant",
-                                "House",
-                                "Tree"],
-                        "Ano ang english ng baso" : ["Monitor",
-                                "Window",
-                                "Pencil",
-                                "Glass"],
-                        "Ano ang english ng ilaw" : ["Air",
-                                "Wind",
-                                "Dark",
-                                "Light"],
-                        "Ano ang english ng unan" : ["Bed",
-                                "Room",
-                                "Blanket",
-                                "Pillow"],
-                        "Ano ang english ng damit" : ["Sock",
-                                "Handkerchief",
-                                "Mantle",
-                                "Clothes"],
-                        "Ano ang english ng itik" : ["Kitten",
-                                "Cat",
-                                "Rabbit",
-                                "Duck"],
-                        "Ano ang english ng Baka" : ["Dog",
-                                "Bird",
-                                "Horse",
-                                "Cow"],
-                        "Ano ang english ng baboy" : ["Cat",
-                                "Chicken",
-                                "Dog",
-                                "Pig"],
-                        "Ano ang english ng bato" : ["Tree",
-                                "Plant",
-                                "House",
-                                "Rock"],
-                        "Ano ang english ng lapis" : ["Monitor",
-                                "Window",
-                                "Glass",
-                                "Pencil"],
-                        "Ano ang english ng hangin" : ["Light",
-                                "Wind",
-                                "Dark",
-                                "Air"],
-                        "Ano ang english ng kama" : ["Pillow",
-                                "Room",
-                                "Blanket",
-                                "Bed"],
-                        "Ano ang english ng panyo" : ["Clothes",
-                                "Sock",
-                                "Mantle",
-                                "Handkerchief"],
-                        "Ano ang english ng bintana" : ["Monitor",
-                                "Pencil",
-                                "Glass",
-                                "Window"],
-                        "Ano ang english ng dilim" : ["Light",
-                                "Wind",
-                                "Air",
-                                "Dark"],
-                        "Ano ang english ng kwarto" : ["Pillow",
-                                "Bed",
-                                "Blanket",
-                                "Room"],
-                        "Ano ang english ng medyas" : ["Clothes",
-                                "Handkerchief",
-                                "Mantle",
-                                "Sock"]
-                        
+    __questions = {
+        "Ano ang english ng aso" : ["Horse",
+                "Bird",
+                "Cow",
+                "Dog"],
+        "Ano ang english ng kabayo" : ["Dog",
+                "Bird",
+                "Cow",
+                "Horse"],
+        "Ano ang english ng pusa" : ["Dog",
+                "Chicken",
+                "Pig",
+                "Cat"],
+        "Ano ang english ng puno" : ["Rock",
+                "Plant",
+                "House",
+                "Tree"],
+        "Ano ang english ng baso" : ["Monitor",
+                "Window",
+                "Pencil",
+                "Glass"],
+        "Ano ang english ng ilaw" : ["Air",
+                "Wind",
+                "Dark",
+                "Light"],
+        "Ano ang english ng unan" : ["Bed",
+                "Room",
+                "Blanket",
+                "Pillow"],
+        "Ano ang english ng damit" : ["Sock",
+                "Handkerchief",
+                "Mantle",
+                "Clothes"],
+        "Ano ang english ng itik" : ["Kitten",
+                "Cat",
+                "Rabbit",
+                "Duck"],
+        "Ano ang english ng Baka" : ["Dog",
+                "Bird",
+                "Horse",
+                "Cow"],
+        "Ano ang english ng baboy" : ["Cat",
+                "Chicken",
+                "Dog",
+                "Pig"],
+        "Ano ang english ng bato" : ["Tree",
+                "Plant",
+                "House",
+                "Rock"],
+        "Ano ang english ng lapis" : ["Monitor",
+                "Window",
+                "Glass",
+                "Pencil"],
+        "Ano ang english ng hangin" : ["Light",
+                "Wind",
+                "Dark",
+                "Air"],
+        "Ano ang english ng kama" : ["Pillow",
+                "Room",
+                "Blanket",
+                "Bed"],
+        "Ano ang english ng panyo" : ["Clothes",
+                "Sock",
+                "Mantle",
+                "Handkerchief"],
+        "Ano ang english ng bintana" : ["Monitor",
+                "Pencil",
+                "Glass",
+                "Window"],
+        "Ano ang english ng dilim" : ["Light",
+                "Wind",
+                "Air",
+                "Dark"],
+        "Ano ang english ng kwarto" : ["Pillow",
+                "Bed",
+                "Blanket",
+                "Room"],
+        "Ano ang english ng medyas" : ["Clothes",
+                "Handkerchief",
+                "Mantle",
+                "Sock"]
+                                
 
-    },  __score = 0, __correctTotal = 0, __incorrectTotal = 0 ) -> None:
-        self.question = question
+        }
+
+    def __init__(self,  __score = 0, __correctTotal = 0, __incorrectTotal = 0 ) -> None:
         self.__score = __score
         self.__correctTotal = __correctTotal
         self.__incorrectTotal = __incorrectTotal
 
     def loadQuestions(self,noOfQuestions) ->dict[str,list]:
-        
+
+      
         #---------------RANDOMIZE DICT-----------------------
         index = 1
         b = list()
         #store keys to list
-        for k in self.question.keys():
-            b.append(k)
+        for k in self.__questions.keys():
+                b.append(k)
 
         #randomize list of keys
         random.shuffle(b)
@@ -108,18 +110,23 @@ class Quiz:
         #create a new dict using the randomized keys and assign corresponding values.
         c = dict()
         for i in b:
-            c[i] = self.question[i]
-            if (index < noOfQuestions):
-                index+=1
-            else:
-                break
+                c[i] = self.__questions[i]
+                if (index < noOfQuestions):
+                        index+=1
+                else:
+                        break
         return c
+            
+   
+               
+        
+        
 
     def checkAnswer(self, question_ : str, answer : str) -> bool:
 
         isCorrect = False
         
-        if(list(self.question[question_])[3] == answer):
+        if(list(self.__questions[question_])[3] == answer):
                 isCorrect = True
                 self.__correctTotal+=1
                 self.__score+=50
@@ -145,4 +152,7 @@ class Quiz:
     #for incorrect total
     def getIncorrectTotal(self) -> int:
        return self.__incorrectTotal
+       #for incorrect total
+    def getLen(self) -> int:
+       return len(self.__questions)
   

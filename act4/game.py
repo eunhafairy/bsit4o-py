@@ -10,14 +10,13 @@ while(True):
     except:
         print("Enter only numeric number")
         continue
-    if(str(noOfQuestion).isnumeric):
-        if (1 <= noOfQuestion <= int(len(newQuiz.question))):
-            print("eligible")
-            break
-        else:
-            print("Enter numbers from 1 -",int(len(newQuiz.question)))
+    
+   
+    if (1 <= noOfQuestion <= newQuiz.getLen()):
+        break
     else:
-        print("Please enter a valid number.")
+        print("Error. Enter numbers only from 1 -",newQuiz.getLen())
+    
 
 #load questions
 qNo = 1
@@ -39,7 +38,7 @@ for k,v in myDict.items():
         try:
             yourAnswer = str(input("Enter your answer (letter only): "))
         except:
-            print("Please enter a character (a,b,c,d).")
+            print("Error. Please enter only characters a,b,c and d.")
             continue
 
         if (yourAnswer == 'A' or yourAnswer == 'a') :
@@ -55,19 +54,21 @@ for k,v in myDict.items():
             ctr = answerList[3]
             break
         else:
-            print("Please enter a character (a,b,c,d).")
+            print("Error. Please enter only characters a,b,c and d.")
 
         
     #check if correct
+
     if(newQuiz.checkAnswer(k, ctr)):
-        print("Hooray! You got 50 points!" , k  ,ctr)
+        print("Hooray! You got 50 points!")
     else:
-        print("Oops! No points this time." , k  ,ctr)
-
+        print("Oops! No points this time.")
+    print("• User Current Score:", newQuiz.getScore(),"•")
     qNo+=1
-    print("=================")
+    print("=============================")
 
-print("=========SCORE BOARD=========")
-print("Score:", newQuiz.getScore())
+print("|        SCORE BOARD        |")
+print("=============================")
+print("Total Score:", newQuiz.getScore())
 print("Total Correct:", newQuiz.getCorrectTotal())
 print("Total Incorrect:", newQuiz.getIncorrectTotal())
