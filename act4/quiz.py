@@ -96,28 +96,32 @@ class Quiz:
     def loadQuestions(self,noOfQuestions) ->dict[str,list]:
 
       
-        #---------------RANDOMIZE DICT-----------------------
-        index = 1
-        b = list()
-        #store keys to list
-        for k in self.__questions.keys():
-                b.append(k)
+        if(1 <= noOfQuestions <= len(self.__questions)):
 
-        #randomize list of keys
-        random.shuffle(b)
+                #---------------RANDOMIZE DICT-----------------------
+                index = 1
+                b = list()
+                #store keys to list
+                for k in self.__questions.keys():
+                        b.append(k)
+
+                #randomize list of keys
+                random.shuffle(b)
 
 
-        #create a new dict using the randomized keys and assign corresponding values.
-        c = dict()
-        for i in b:
-                c[i] = self.__questions[i]
-                if (index < noOfQuestions):
-                        index+=1
-                else:
-                        break
-        return c
-            
-   
+                #create a new dict using the randomized keys and assign corresponding values.
+                c = dict()
+                for i in b:
+                        c[i] = self.__questions[i]
+                        if (index < noOfQuestions):
+                                index+=1
+                        else:
+                                break
+                return c
+                
+        else:
+                print("Error. Enter numbers only from 1 -", len(self.__questions))
+                return None
                
         
         
@@ -153,6 +157,3 @@ class Quiz:
     def getIncorrectTotal(self) -> int:
        return self.__incorrectTotal
        #for incorrect total
-    def getLen(self) -> int:
-       return len(self.__questions)
-  
