@@ -90,3 +90,5 @@ while(True):
     else:
         print("Thank you for playing!")
         break
+
+input()
